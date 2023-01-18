@@ -1,19 +1,23 @@
 # from parsel import Selector
 import requests
+import time
 
 
 # Requisito 1
 def fetch(url):
-    for _ in range(15):
+    try:
         response = requests.get(
-            url, headers={"user-agent": "Fake user-agent"}, timeout=1
+            url, headers={"user-agent": "Fake user-agent"}, timeout=3
             )
-        if response.status_code == 200:
-            print(response.status_code)
-            return response
-            # time.sleep(1)
-        else:
+        time.sleep(1)
+        if response.status_code != 200:
             return None
+        else:
+            print(response.status_code, response.text)
+            return response.text
+
+    except requests.ReadTimeout:
+        return None
 
 
 # Requisito 2

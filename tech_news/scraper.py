@@ -1,6 +1,7 @@
 # from parsel import Selector
 import requests
 import time
+from parsel import Selector
 
 
 # Requisito 1
@@ -13,7 +14,6 @@ def fetch(url):
         if response.status_code != 200:
             return None
         else:
-            print(response.status_code, response.text)
             return response.text
 
     except requests.ReadTimeout:
@@ -22,7 +22,10 @@ def fetch(url):
 
 # Requisito 2
 def scrape_updates(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(html_content)
+    links = selector.css("div.cs-overlay a::attr(href)").getall()
+    print(f"🔥🔥🔥 {links}")
+    return links
 
 
 # Requisito 3

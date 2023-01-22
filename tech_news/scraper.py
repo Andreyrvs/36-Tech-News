@@ -24,7 +24,6 @@ def fetch(url):
 def scrape_updates(html_content):
     selector = Selector(html_content)
     links = selector.css("div.cs-overlay a::attr(href)").getall()
-    print(f"🔥🔥🔥 {links}")
     return links
 
 

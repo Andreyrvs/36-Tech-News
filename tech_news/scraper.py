@@ -51,7 +51,9 @@ def scrape_news(html_content):
     summary = selector.xpath('string(//p[1])').getall()
     summary_formatted = " ".join(summary)
 
-    tags = selector.xpath("//section.post-tags/ul/li/a/text()").getall()
+    tags = selector.xpath(
+        '//section[@class="post-tags"]/ul/li/a/text()'
+    ).getall()
 
     category = selector.css("span.label::text").get()
     dicio = {
@@ -64,7 +66,6 @@ def scrape_news(html_content):
         "tags": tags,
         "category": str(category),
     }
-    # print(f"🔥🔥🔥{summary_first}")
     return dicio
 
 

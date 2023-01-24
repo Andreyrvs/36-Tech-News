@@ -2,7 +2,7 @@
 import requests
 import time
 from parsel import Selector
-# from tech_news.database import create_news
+from tech_news.database import create_news
 
 
 # Requisito 1
@@ -74,9 +74,27 @@ def scrape_news(html_content):
 def get_tech_news(amount):
     url = "https://blog.betrybe.com/"
     page_news = fetch(url)
-    updates = scrape_updates(page_news)
-    next_link = scrape_next_page_link(updates)
-    news = scrape_news(next_link)
-    print(f"🔥🔥🔥{news}")
-    # create_news(page_news)
-    return news
+    list_of_pages = scrape_updates(page_news)
+
+    search_lastest_news = list_of_pages[:amount]
+
+    tech_news = []
+
+    if amount > len(list_of_pages):
+        for news in search_lastest_news:
+
+            next_link = scrape_next_page_link(page_news)
+            next_page = fetch(next_link)
+            list_of_pages = scrape_updates(next_page)
+            search_lastest_news = list_of_pages[:amount]
+
+            news = scrape_news(search_lastest_news)
+            tech_news = news
+            create_news(tech_news)
+
+    for news in search_lastest_news:
+        tech_news = scrape_news(news)
+        # Aceita uma lista com as noticias tratadas
+        create_news(tech_news)
+
+    return tech_news

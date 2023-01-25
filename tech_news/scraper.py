@@ -2,7 +2,7 @@
 import requests
 import time
 from parsel import Selector
-from tech_news.database import create_news
+from tech_news.database import create_news, get_collection
 
 
 # Requisito 1
@@ -86,14 +86,16 @@ def get_tech_news(amount):
         create_news(tech_news)
 
     if amount > len(list_of_news):
-
-        print('\ntech_news:', tech_news)
         chama = pagination(amount, list_of_news)
-        all = tech_news.append(chama)
-        print('all: ', all)
-        create_news(chama)
+        create_news(tech_news)
 
-    print('\n FORA:', tech_news)
+    a = []
+    cursor = get_collection().find()
+    for cur in cursor:
+        print(cur)
+        a.append(cur)
+    # print('\n:', a, '\n', get_collection().find())
+    # print('\n:', tech_news)
     return tech_news
 
 

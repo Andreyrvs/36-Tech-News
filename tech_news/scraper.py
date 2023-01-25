@@ -79,22 +79,25 @@ def get_tech_news(amount):
     search_lastest_news = list_of_news[:amount]
 
     tech_news = []
-    quantity = list_of_news
     if amount < len(list_of_news):
         for news in search_lastest_news:
             print('news: ', news)
             page_news = fetch(news)
             dicio_news = scrape_news(page_news)
             tech_news.append(dicio_news)
+        # print('tech_news: ', tech_news)
+        create_news(tech_news)
+
+    if amount > len(list_of_news):
+        next_link = scrape_next_page_link(page_news)
+        next_page = fetch(next_link)
+        list_of_news = scrape_updates(next_page)
+        search_lastest_news = list_of_news[:amount]
+        for news in search_lastest_news:
+            page_news = fetch(news)
+            dicio_news = scrape_news(page_news)
+            tech_news.append(dicio_news)
         print('tech_news: ', tech_news)
         create_news(tech_news)
-    else:
-        while amount > len(list_of_news):
-            next_link = scrape_next_page_link(page_news)
-            next_page = fetch(next_link)
-            list_of_news = scrape_updates(next_page)
-            news = scrape_news(search_lastest_news)
-            tech_news.append(news)
-            quantity.extend(list_of_news)
 
     return tech_news

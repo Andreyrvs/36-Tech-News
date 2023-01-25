@@ -79,25 +79,21 @@ def get_tech_news(amount):
     search_lastest_news = list_of_news[:amount]
 
     tech_news = []
-
-    # Trocar de pagina
-    # pegar a quantidade de noticias da pagina colocar num array
-    # e verificar se ja deu a quantidade do amount
-
-    if amount > len(list_of_news):
-        for news in search_lastest_news:
-
-            next_link = scrape_next_page_link(page_news)
-            next_page = fetch(next_link)
-            list_of_news = scrape_updates(next_page)
-
+    quantity = list_of_news
+    print('quantity: ', len(quantity))
+    while amount > len(list_of_news):
+        next_link = scrape_next_page_link(page_news)
+        next_page = fetch(next_link)
+        list_of_news = scrape_updates(next_page)
+        quantity.extend(list_of_news)
+    else:
+        if len(quantity) < amount:
             news = scrape_news(search_lastest_news)
             tech_news.append(news)
             create_news(tech_news)
-
-    for news in search_lastest_news:
-        tech_news.append(scrape_news(news))
-        # Aceita uma lista com as noticias tratadas
-        create_news(tech_news)
+        for news in search_lastest_news:
+            tech_news.append(scrape_news(news))
+            print('tech_news: ', tech_news)
+            create_news(tech_news)
 
     return tech_news

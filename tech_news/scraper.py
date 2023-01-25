@@ -2,7 +2,7 @@
 import requests
 import time
 from parsel import Selector
-from tech_news.database import create_news, get_collection, search_news
+from tech_news.database import create_news
 
 
 # Requisito 1
@@ -85,36 +85,15 @@ def get_tech_news(amount):
             tech_news.append(dicio_news)
         create_news(tech_news)
 
-    # new_amount = amount
-    # if amount > len(list_of_news):
-    #     print('tech_news: ', tech_news)
-    #     next_link = scrape_next_page_link(page_news)
-    #     next_page = fetch(next_link)
-    #     list_of_news = scrape_updates(next_page)
-    #     new_amount -= int(len(list_of_news))
-    #     search_lastest_news = list_of_news[:new_amount]
-    #     for news in search_lastest_news:
-    #         page_news = fetch(news)
-    #         dicio_news = scrape_news(page_news)
-    #         tech_news.append(dicio_news)
-    #     create_news(tech_news)
-
-    for cursor in get_collection().find():
-        print('get_collection: ', cursor)
-
-    
     if amount > len(list_of_news):
 
-        # print('tech_news: ', tech_news)
-        all = tech_news.extend(pagination(amount, list_of_news))
-        # print('all: ', all)
+        print('\ntech_news:', tech_news)
+        chama = pagination(amount, list_of_news)
+        all = tech_news.append(chama)
+        print('all: ', all)
+        create_news(chama)
 
-        create_news(all)
-
-    # for item in tech_news:
-    #     # print(len(search_lastest_news), item["url"])
-    #     pass        
-
+    print('\n FORA:', tech_news)
     return tech_news
 
 
@@ -123,7 +102,6 @@ def pagination(amount, list_of_news):
     page_news = fetch(url)
     tech_news = []
     new_amount = amount
-    # print('tech_news: ', tech_news)
     next_link = scrape_next_page_link(page_news)
     next_page = fetch(next_link)
     list_of_news = scrape_updates(next_page)
@@ -133,5 +111,4 @@ def pagination(amount, list_of_news):
         page_news = fetch(news)
         dicio_news = scrape_news(page_news)
         tech_news.append(dicio_news)
-    # print('tech_news: ', tech_news)
     return tech_news

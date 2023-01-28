@@ -26,7 +26,8 @@ def search_by_date(date):
     except ValueError:
         raise ValueError("Data inválida")
 
-    inverted_date = datetime.datetime.strptime(date, '%Y-%m-%d').strftime("%d/%m/%Y")
+    dt = datetime.datetime.strptime(date, '%Y-%m-%d')
+    inverted_date = dt.strftime("%d/%m/%Y")
     query = {"timestamp": {"$regex": inverted_date}}
     result = search_news(query)
     list_tuple = []

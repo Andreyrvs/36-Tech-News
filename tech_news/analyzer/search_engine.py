@@ -18,7 +18,10 @@ def search_by_title(title):
 
 # Requisito 7
 def search_by_date(date):
-
+    # /** linhas 26 a 30 (try/exept) foram retiradas desse site */
+    # /** Source:
+    # https://www.tutorialspoint.com/How-to-do-date-validation-in-Python
+    # */
     try:
         date_format = '%Y-%m-%d'
         date_object = datetime.datetime.strptime(date, date_format)

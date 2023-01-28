@@ -2,7 +2,7 @@
 import requests
 import time
 from parsel import Selector
-from tech_news.database import create_news, get_collection
+from tech_news.database import create_news
 
 
 # Requisito 1
@@ -72,45 +72,21 @@ def scrape_news(html_content):
 
 # Requisito 5
 def get_tech_news(amount):
+    tech_news = []
     url = "https://blog.betrybe.com/"
     page_news = fetch(url)
     list_of_news = scrape_updates(page_news)
-    search_lastest_news = list_of_news[:amount]
-
-    tech_news = []
-    if amount < len(list_of_news):
-        for news in search_lastest_news:
-            page_news = fetch(news)
-            dicio_news = scrape_news(page_news)
-            tech_news.append(dicio_news)
-        create_news(tech_news)
-
-    if amount > len(list_of_news):
-        chama = pagination(amount, list_of_news)
-        create_news(tech_news)
-
-    a = []
-    cursor = get_collection().find()
-    for cur in cursor:
-        print(cur)
-        a.append(cur)
-    # print('\n:', a, '\n', get_collection().find())
-    # print('\n:', tech_news)
-    return tech_news
-
-
-def pagination(amount, list_of_news):
-    url = "https://blog.betrybe.com/"
-    page_news = fetch(url)
-    tech_news = []
-    new_amount = amount
     next_link = scrape_next_page_link(page_news)
-    next_page = fetch(next_link)
-    list_of_news = scrape_updates(next_page)
-    new_amount -= int(len(list_of_news))
-    search_lastest_news = list_of_news[:new_amount]
-    for news in search_lastest_news:
-        page_news = fetch(news)
-        dicio_news = scrape_news(page_news)
-        tech_news.append(dicio_news)
+
+    while len(list_of_news) < amount:
+        next_fetch = fetch(next_link)
+        next_link = scrape_next_page_link(next_fetch)
+        list_of_news.extend(scrape_updates(next_fetch))
+
+    for item in list_of_news[:amount]:
+        next_fetch = fetch(item)
+        tech_news.append(scrape_news(next_fetch))
+
+    create_news(tech_news)
+
     return tech_news

@@ -13,7 +13,6 @@ def search_by_title(title):
     list_tuple = []
     for element in result:
         list_tuple.append((element["title"], element["url"]))
-    print('result: 🔥🔥🔥', list_tuple)
     return list_tuple
 
 

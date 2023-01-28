@@ -45,18 +45,10 @@ def search_by_date(date):
 
 # Requisito 8
 def search_by_tag(tag):
-    if tag == '':
-        return []
-    print('\n tag: ', tag)
-    case_sentitive = tag.lower()
-    query = {"tags": {"$regex": case_sentitive, "$all": [case_sentitive]}}
+    query = {"tags": {"$regex": tag, "$options": "i"}}
     result = search_news(query)
-    print('\n result: ', result)
     list_tuple = []
-    print('list_tuple: ', list_tuple)
     for element in result:
-        if case_sentitive not in element["tags"]:
-            return []
         list_tuple.append((element["title"], element["url"]))
     return list_tuple
 

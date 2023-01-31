@@ -8,6 +8,28 @@ from tech_news.analyzer.search_engine import (
     search_by_category,
 )
 
+# choices = [
+#     get_news,
+#     get_title,
+#     get_date,
+#     get_tag,
+#     get_category,
+#     get_top_news,
+#     get_top_categories,
+#     exit,
+# ]
+
+# choices = {
+#     "0": get_news,
+#     "1": get_title,
+#     "2": get_date,
+#     "3": get_tag,
+#     "4": get_category,
+#     "5": get_top_news,
+#     "6": get_top_categories,
+#     "7": exit,
+# }
+
 
 # Requisito 12
 def analyzer_menu():
@@ -35,23 +57,11 @@ def analyzer_menu():
         "7": exit,
     }
 
-    test = [
-        get_news,
-        get_title,
-        get_date,
-        get_tag,
-        get_category,
-        get_top_news,
-        get_top_categories,
-        exit,
-    ]
-
-    print(test)
     try:
         print(itens)
-        choice = input("Selecione uma das opções a seguir: ")
-        choices[choice]
-        # print(test[int(choice)])
+        choice = input()
+        choices[choice]()
+
     except KeyError:
         print("Opção inválida", file=sys.stderr)
 
@@ -78,6 +88,7 @@ def get_tag():
 
 def get_category():
     item = input("Digite a categoria:")
+    print('item: ', type(item))
     return search_by_category(item)
 
 

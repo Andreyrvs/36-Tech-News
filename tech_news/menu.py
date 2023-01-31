@@ -31,21 +31,31 @@ from tech_news.analyzer.search_engine import (
 # }
 
 
+# itens = """
+# Selecione uma das opções a seguir:\n
+# 0 - Popular o banco com notícias;\n
+# 1 - Buscar notícias por título;\n
+# 2 - Buscar notícias por data;\n
+# 3 - Buscar notícias por tag;\n
+# 4 - Buscar notícias por categoria;\n
+# 5 - Listar top 5 notícias;\n
+# 6 - Listar top 5 categorias;\n
+# 7 - Sair.\n
+# """
+
 # Requisito 12
 def analyzer_menu():
-
-    itens = """
-    Selecione uma das opções a seguir:\n
-    0 - Popular o banco com notícias;\n
-    1 - Buscar notícias por título;\n
-    2 - Buscar notícias por data;\n
-    3 - Buscar notícias por tag;\n
-    4 - Buscar notícias por categoria;\n
-    5 - Listar top 5 notícias;\n
-    6 - Listar top 5 categorias;\n
-    7 - Sair.\n
-    """
-
+    itens = (
+        "Selecione uma das opções a seguir:\n"
+        " 0 - Popular o banco com notícias;\n"
+        " 1 - Buscar notícias por título;\n"
+        " 2 - Buscar notícias por data;\n"
+        " 3 - Buscar notícias por tag;\n"
+        " 4 - Buscar notícias por categoria;\n"
+        " 5 - Listar top 5 notícias;\n"
+        " 6 - Listar top 5 categorias;\n"
+        " 7 - Sair.\n"
+    )
     choices = {
         "0": get_news,
         "1": get_title,
@@ -54,7 +64,7 @@ def analyzer_menu():
         "4": get_category,
         "5": get_top_news,
         "6": get_top_categories,
-        "7": exit,
+        "7": get_exit,
     }
 
     try:
@@ -98,3 +108,7 @@ def get_top_news():
 
 def get_top_categories():
     return top_5_categories()
+
+
+def get_exit():
+    return exit()

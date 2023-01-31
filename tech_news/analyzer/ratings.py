@@ -6,7 +6,6 @@ def top_5_news():
     result = find_news()
 
     # /**
-    # max_count retirada de:
     # Source:
     # https://stackoverflow.com/a/73050/17053855
     # */
@@ -41,6 +40,10 @@ def top_5_categories():
             counts[item] = 1
 
     new_counts = []
+    # /**
+    # Source:
+    # https://diegomariano.com/como-ordenar-um-dicionario-em-python/
+    # */
     for i in sorted(counts, key=counts.get, reverse=True):
         new_counts.append(i)
         print(i, counts[i])

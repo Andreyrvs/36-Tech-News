@@ -8,40 +8,6 @@ from tech_news.analyzer.search_engine import (
     search_by_category,
 )
 
-# choices = [
-#     get_news,
-#     get_title,
-#     get_date,
-#     get_tag,
-#     get_category,
-#     get_top_news,
-#     get_top_categories,
-#     exit,
-# ]
-
-# choices = {
-#     "0": get_news,
-#     "1": get_title,
-#     "2": get_date,
-#     "3": get_tag,
-#     "4": get_category,
-#     "5": get_top_news,
-#     "6": get_top_categories,
-#     "7": exit,
-# }
-
-
-# itens = """
-# Selecione uma das opções a seguir:\n
-# 0 - Popular o banco com notícias;\n
-# 1 - Buscar notícias por título;\n
-# 2 - Buscar notícias por data;\n
-# 3 - Buscar notícias por tag;\n
-# 4 - Buscar notícias por categoria;\n
-# 5 - Listar top 5 notícias;\n
-# 6 - Listar top 5 categorias;\n
-# 7 - Sair.\n
-# """
 
 # Requisito 12
 def analyzer_menu():

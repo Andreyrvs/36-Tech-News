@@ -46,6 +46,7 @@ def analyzer_menu():
         exit,
     ]
 
+    print(test)
     try:
         print(itens)
         choice = input("Selecione uma das opções a seguir: ")

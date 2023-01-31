@@ -12,14 +12,18 @@ def top_5_news():
     # */
     sort_title = sorted(result, key=lambda result: result['title'])
     sort_comments = sorted(
-        sort_title, key=lambda sort_title: sort_title['comments_count']
+        sort_title,
+        key=lambda sort_title: sort_title['comments_count'],
+        reverse=True
     )
-    sort_comments.reverse()
     limited_newlist = sort_comments[:5]
 
+    # /**
+    # * Consultei o repositório do Lucas Dalbo para resolver essa parte.
+    # * Link do repositório:
+    # * https://github.com/tryber/sd-020-a-tech-news/pull/2
+    # */
     list_tuple = [(item["title"], item["url"]) for item in limited_newlist]
-
-    print("\n", list_tuple)
 
     return list_tuple
 

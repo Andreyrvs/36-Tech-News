@@ -4,20 +4,20 @@ from tech_news.database import find_news
 # Requisito 10
 def top_5_news():
     result = find_news()
-    if len(result) < 5:
-        return result
- 
-    # /** 
+
+    # /**
     # max_count retirada de:
     # Source:
     # https://stackoverflow.com/a/73050/17053855
     # */
-    newlist = sorted(result, key=lambda d: d['comments_count'], reverse=True)
-    limeted_newlist = newlist[:5]
+    sort_title = sorted(result, key=lambda result: result['title'])
+    sort_comments = sorted(
+        sort_title, key=lambda sort_title: sort_title['comments_count']
+    )
+    sort_comments.reverse()
+    limited_newlist = sort_comments[:5]
 
-    list_tuple = []
-    for element in limeted_newlist:
-        list_tuple.append((element["title"], element["url"]))
+    list_tuple = [(item["title"], item["url"]) for item in limited_newlist]
 
     print("\n", list_tuple)
 

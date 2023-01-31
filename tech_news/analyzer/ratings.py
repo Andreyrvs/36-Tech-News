@@ -18,7 +18,7 @@ def top_5_news():
     limited_newlist = sort_comments[:5]
 
     # /**
-    # * Consultei o repositório do Lucas Dalbo para resolver essa parte.
+    # * Consultei o repositório do Lucas Dalbo (Lucas-Dalbo) para resolver essa parte.
     # * Link do repositório:
     # * https://github.com/tryber/sd-020-a-tech-news/pull/2
     # */
@@ -46,6 +46,8 @@ def top_5_categories():
     # */
     for i in sorted(counts, key=counts.get, reverse=True):
         new_counts.append(i)
-        print(i, counts[i])
+        # print(i, counts[i])
 
-    return new_counts
+    a = new_counts
+    print('\na: ', a)
+    return a

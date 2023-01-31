@@ -30,4 +30,11 @@ def top_5_news():
 
 # Requisito 11
 def top_5_categories():
-    """Seu código deve vir aqui"""
+    result = find_news()
+
+    new_list = []
+
+    for item in result:
+        new_list.append(item["tags"])
+
+    return new_list

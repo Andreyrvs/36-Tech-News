@@ -1,3 +1,4 @@
+import sys
 from tech_news.analyzer.ratings import top_5_categories, top_5_news
 from tech_news.scraper import get_tech_news
 from tech_news.analyzer.search_engine import (
@@ -22,17 +23,21 @@ def analyzer_menu():
     6 - Listar top 5 categorias;\n
     7 - Sair.\n
     """
+    try:
+        print(itens)
+        choice = input()
+        if choice == '0':
+            amount = input('Digite quantas notícias serão buscadas:')
+            get_tech_news(int(amount))
+        elif choice == '1':
+            str(input('Digite o título:'))
+        elif choice == '2':
+            input('Digite a data no formato aaaa-mm-dd:')
+        elif choice == '3':
+            input('Digite a tag:')
+    except KeyError:
+        print("Opção inválida", file=sys.stderr)
 
-    print(itens)
-    choice = input()
-    if choice == '0':
-        int(input('Digite quantas notícias serão buscadas:'))
-    elif choice == '1':
-        str(input('Digite o título:'))
-    elif choice == '2':
-        input('Digite a data no formato aaaa-mm-dd:')
-    elif choice == '3':
-        input('Digite a tag:')
 
 
 def category(param):

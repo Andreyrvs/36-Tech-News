@@ -5,7 +5,7 @@ from tech_news.analyzer.search_engine import (
     search_by_title,
     search_by_date,
     search_by_tag,
-    search_by_category
+    search_by_category,
 )
 
 
@@ -23,52 +23,66 @@ def analyzer_menu():
     6 - Listar top 5 categorias;\n
     7 - Sair.\n
     """
-    
+
     choices = {
-        '0': get_news,
-        '1': get_title,
-        '2': get_date,
-        '3': get_tag,
-        '4': get_category,
-        '5': ,
-        '6': ,
-        '7': exit(),
+        "0": get_news,
+        "1": get_title,
+        "2": get_date,
+        "3": get_tag,
+        "4": get_category,
+        "5": get_top_news,
+        "6": get_top_categories,
+        "7": exit,
     }
+
+    test = [
+        get_news,
+        get_title,
+        get_date,
+        get_tag,
+        get_category,
+        get_top_news,
+        get_top_categories,
+        exit,
+    ]
+
     try:
         print(itens)
-        choice = input()
+        choice = input("Selecione uma das opções a seguir: ")
+        choices[choice]
+        # print(choices[int(choice)])
     except KeyError:
         print("Opção inválida", file=sys.stderr)
 
 
 def get_news():
-    amount = input('Digite quantas notícias serão buscadas:')
-    get_tech_news(int(amount))
+    amount = input("Digite quantas notícias serão buscadas:")
+    return get_tech_news(int(amount))
 
 
 def get_title():
-    item = input('Digite o título:')
-    search_by_title(item)
+    item = input("Digite o título:")
+    return search_by_title(item)
 
 
 def get_date():
-    item = input('Digite a data no formato aaaa-mm-dd:')
-    search_by_date(item)
+    item = input("Digite a data no formato aaaa-mm-dd:")
+    return search_by_date(item)
 
 
 def get_tag():
-    item = input('Digite a tag:')
-    search_by_tag(item)
+    item = input("Digite a tag:")
+    return search_by_tag(item)
 
 
 def get_category():
-    item = input('Digite a categoria:')
-    search_by_category(item)
+    item = input("Digite a categoria:")
+    return search_by_category(item)
 
 
 def get_top_news():
-    top_5_news()
+    return top_5_news()
 
 
 def get_top_categories():
-    top_5_categories()
+    return top_5_categories()

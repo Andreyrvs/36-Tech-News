@@ -18,7 +18,8 @@ def top_5_news():
     limited_newlist = sort_comments[:5]
 
     # /**
-    # * Consultei o repositório do Lucas Dalbo (Lucas-Dalbo) para resolver essa parte.
+    # * Consultei o repositório do
+    # Lucas Dalbo (Lucas-Dalbo) para resolver essa parte.
     # * Link do repositório:
     # * https://github.com/tryber/sd-020-a-tech-news/pull/2
     # */

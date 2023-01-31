@@ -1,4 +1,5 @@
 from tech_news.database import find_news
+from collections import Counter
 
 
 # Requisito 10
@@ -31,24 +32,37 @@ def top_5_news():
 # Requisito 11
 def top_5_categories():
     result = find_news()
-    compre = [item["category"] for item in result]
+    categories = [item["category"] for item in result]
+    sorted_categories = sorted(categories)
+    sorted_alphabetically = Counter(sorted_categories)
+    most_common = sorted_alphabetically.most_common(5)
 
-    counts = {}
-    for item in compre:
-        if item in counts:
-            counts[item] += 1
-        else:
-            counts[item] = 1
+    list_of_categories = []
+    for index in most_common:
+        list_of_categories.append(index[0])
 
-    new_counts = []
-    # /**
-    # Source:
-    # https://diegomariano.com/como-ordenar-um-dicionario-em-python/
-    # */
-    for i in sorted(counts, key=counts.get, reverse=True):
-        new_counts.append(i)
-        # print(i, counts[i])
+    print(list_of_categories)
+    return list_of_categories
 
-    a = new_counts
-    print('\na: ', a)
-    return a
+
+
+    # counts = {}
+    # for item in categories:
+    #     if item in counts:
+    #         counts[item] += 1
+    #     else:
+    #         counts[item] = 1
+
+    # new_counts = sorted(counts)
+
+    # new_counts = []
+    # # /**
+    # # Source:
+    # # https://diegomariano.com/como-ordenar-um-dicionario-em-python/
+    # # */
+    # for i in sorted(counts, key=counts.get, reverse=True):
+    #     new_counts.append(i)
+    #     # print(i, counts[i])
+
+    # a = new_counts
+    # # print('\na: ', a)

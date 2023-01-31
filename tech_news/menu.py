@@ -50,7 +50,7 @@ def analyzer_menu():
         print(itens)
         choice = input("Selecione uma das opções a seguir: ")
         choices[choice]
-        # print(choices[int(choice)])
+        # print(test[int(choice)])
     except KeyError:
         print("Opção inválida", file=sys.stderr)
 

@@ -43,26 +43,3 @@ def top_5_categories():
 
     print(list_of_categories)
     return list_of_categories
-
-
-
-    # counts = {}
-    # for item in categories:
-    #     if item in counts:
-    #         counts[item] += 1
-    #     else:
-    #         counts[item] = 1
-
-    # new_counts = sorted(counts)
-
-    # new_counts = []
-    # # /**
-    # # Source:
-    # # https://diegomariano.com/como-ordenar-um-dicionario-em-python/
-    # # */
-    # for i in sorted(counts, key=counts.get, reverse=True):
-    #     new_counts.append(i)
-    #     # print(i, counts[i])
-
-    # a = new_counts
-    # # print('\na: ', a)

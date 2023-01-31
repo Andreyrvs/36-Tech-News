@@ -111,4 +111,4 @@ def get_top_categories():
 
 
 def get_exit():
-    return exit()
+    return sys.exit("Encerrando script")

@@ -1,5 +1,4 @@
 from tech_news.database import find_news
-from collections import Counter
 
 
 # Requisito 10
@@ -42,9 +41,8 @@ def top_5_categories():
             counts[item] = 1
 
     new_counts = []
-    for i in sorted(counts, key = counts.get, reverse=True):
+    for i in sorted(counts, key=counts.get, reverse=True):
         new_counts.append(i)
         print(i, counts[i])
 
-    # print('new_list: ', test)
     return new_counts

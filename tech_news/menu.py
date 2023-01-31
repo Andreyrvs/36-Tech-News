@@ -23,30 +23,52 @@ def analyzer_menu():
     6 - Listar top 5 categorias;\n
     7 - Sair.\n
     """
+    
+    choices = {
+        '0': get_news,
+        '1': get_title,
+        '2': get_date,
+        '3': get_tag,
+        '4': get_category,
+        '5': ,
+        '6': ,
+        '7': exit(),
+    }
     try:
         print(itens)
         choice = input()
-        if choice == '0':
-            amount = input('Digite quantas notícias serão buscadas:')
-            get_tech_news(int(amount))
-        elif choice == '1':
-            str(input('Digite o título:'))
-        elif choice == '2':
-            input('Digite a data no formato aaaa-mm-dd:')
-        elif choice == '3':
-            input('Digite a tag:')
     except KeyError:
         print("Opção inválida", file=sys.stderr)
 
 
+def get_news():
+    amount = input('Digite quantas notícias serão buscadas:')
+    get_tech_news(int(amount))
 
-def category(param):
-    if param == '4':
-        input('Digite a categoria:')
 
-    # elif choice == 5:
-    #     input('')
-    # elif choice == 6:
-    #     input('')
-    # elif choice == 7:
-    #     input('')
+def get_title():
+    item = input('Digite o título:')
+    search_by_title(item)
+
+
+def get_date():
+    item = input('Digite a data no formato aaaa-mm-dd:')
+    search_by_date(item)
+
+
+def get_tag():
+    item = input('Digite a tag:')
+    search_by_tag(item)
+
+
+def get_category():
+    item = input('Digite a categoria:')
+    search_by_category(item)
+
+
+def get_top_news():
+    top_5_news()
+
+
+def get_top_categories():
+    top_5_categories()

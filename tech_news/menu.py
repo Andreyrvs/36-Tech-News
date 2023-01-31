@@ -1,34 +1,44 @@
+from tech_news.analyzer.ratings import top_5_categories, top_5_news
+from tech_news.scraper import get_tech_news
+from tech_news.analyzer.search_engine import (
+    search_by_title,
+    search_by_date,
+    search_by_tag,
+    search_by_category
+)
+
+
 # Requisito 12
 def analyzer_menu():
-    choice = int(input('Selecione uma das opções a seguir: '))
+
     itens = """
-    Selecione uma das opções a seguir: 
-    0 - Popular o banco com notícias;
-    1 - Buscar notícias por título;
-    2 - Buscar notícias por data;
-    3 - Buscar notícias por tag;
-    4 - Buscar notícias por categoria;
-    5 - Listar top 5 notícias;
-    6 - Listar top 5 categorias;
-    7 - Sair.
+    Selecione uma das opções a seguir:\n
+    0 - Popular o banco com notícias;\n
+    1 - Buscar notícias por título;\n
+    2 - Buscar notícias por data;\n
+    3 - Buscar notícias por tag;\n
+    4 - Buscar notícias por categoria;\n
+    5 - Listar top 5 notícias;\n
+    6 - Listar top 5 categorias;\n
+    7 - Sair.\n
     """
-    int(input(itens))
+
     print(itens)
-    if choice == 0:
+    choice = input()
+    if choice == '0':
         int(input('Digite quantas notícias serão buscadas:'))
+    elif choice == '1':
+        str(input('Digite o título:'))
+    elif choice == '2':
+        input('Digite a data no formato aaaa-mm-dd:')
+    elif choice == '3':
+        input('Digite a tag:')
 
 
-    # choice = int(input('Selecione uma das opções a seguir: '))
-    # if choice == 0:
-    #     int(input('Digite quantas notícias serão buscadas:'))
-    # elif choice == 1:
-    #     str(input('Digite o título:'))
-    # elif choice == 2:
-    #     input('Digite a data no formato aaaa-mm-dd:')
-    # elif choice == 3:
-    #     input('Digite a tag:')
-    # elif choice == 4:
-    #     input('Digite a categoria:')
+def category(param):
+    if param == '4':
+        input('Digite a categoria:')
+
     # elif choice == 5:
     #     input('')
     # elif choice == 6:

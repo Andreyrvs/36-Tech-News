@@ -1,18 +1,28 @@
-# My Awesome Project
+# Tech News
 
 ## Contexto
 
-Este projeto trata-se de um conversor de imagens simpes. É possivel converter imagems no fomato .webp para .png!
+Esse projeto trata-se de consultas em notícias sobre tecnologia. As notícias podem ser obtidas através da raspagem do [blog da Trybe](https://blog.betrybe.com/).
 
 ## Técnologias usadas
 
 Aplicação:
 
-> Desenvolvido usando: Python
+> Desenvolvido usando: Python, Pytest, web scraping
 
 ## Habilidades
 
 Adquiri essas habilidades ao desenvolver esse projeto:
+
+- Utilizar o terminal interativo do Python
+
+- Escrever seus próprios módulos e importá-los em outros códigos
+
+- Aplicar técnicas de raspagem de dados
+
+- Extrair dados de conteúdo HTML
+
+- Armazenar os dados obtidos em um banco de dado
 
 ## Instalando Dependências
 

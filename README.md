@@ -60,6 +60,12 @@ Adquiri essas habilidades ao desenvolver esse projeto:
 
 ## Executando aplicação
 
+- Para rodar o banco de dados:
+
+   ```bash
+   docker-compose up -d mongodb
+   ```
+
 - Para rodar a aplicação com menu interativo:
 
   ```bash

@@ -8,7 +8,7 @@ Esse projeto trata-se de consultas em notícias sobre tecnologia. As notícias p
 
 Aplicação:
 
-> Desenvolvido usando: Python, Pytest, web scraping
+> Desenvolvido usando: Python, Pytest, MongoDB, web scraping
 
 ## Habilidades
 
@@ -29,7 +29,7 @@ Adquiri essas habilidades ao desenvolver esse projeto:
 - clone o projeto:
 
   ```bash
-  git clone
+  git clone git@github.com:Andreyrvs/36-Tech-News.git
   ```
 
 > Aplicação
@@ -37,7 +37,7 @@ Adquiri essas habilidades ao desenvolver esse projeto:
 1. **Entre no diretório**
 
    ```bash
-   cd
+   cd 36-Tech-News
    ```
 
 2. **Criar o ambiente virtual**
@@ -60,17 +60,8 @@ Adquiri essas habilidades ao desenvolver esse projeto:
 
 ## Executando aplicação
 
-- Para rodar a aplicação:
+- Para rodar a aplicação com menu interativo:
 
   ```bash
-  cd src/
-  python3 -u
-  ```
-
-## Executando Testes
-
-- Para rodar todos os Testes:
-
-  ```bash
-  python3 -m pytest
+  tech-news-analyzer
   ```
